@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✦ GLAM ROT VINTAGE ✦</title>
+  <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Pacifico&family=VT323&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --hot-pink: #FF2D8B;
+      --baby-pink: #FFB3D9;
+      --bubblegum: #FF78C4;
+      --lilac: #D4A8FF;
+      --cyber-blue: #00E5FF;
+      --lime: #CCFF00;
+      --white: #FFFFFF;
+      --cream: #FFF5FB;
+      --deep-pink: #C4006A;
+      --chrome: linear-gradient(135deg, #e8e8e8 0%, #ffffff 30%, #c0c0c0 50%, #ffffff 70%, #d0d0d0 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── CURSOR ── */
+    * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='26' font-size='26'%3E🌸%3C/text%3E%3C/svg%3E") 16 16, auto; }
+
+    body {
+      background: #1a001a;
+      font-family: 'Quicksand', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── ANIMATED BG ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(255,45,139,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(212,168,255,0.15) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%, rgba(0,229,255,0.06) 0%, transparent 60%),
+        #0d000d;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ── SCROLLING STARS ── */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      color: var(--baby-pink);
+      font-size: 0.7rem;
+      animation: twinkle var(--d) ease-in-out infinite var(--delay);
+      opacity: 0;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* ── TOP TICKER ── */
+    .ticker {
+      background: linear-gradient(90deg, var(--hot-pink), var(--bubblegum), var(--lilac), var(--cyber-blue), var(--hot-pink));
+      background-size: 300% 100%;
+      animation: gradshift 5s linear infinite;
+      padding: 6px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 10;
+    }
+    @keyframes gradshift {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 300% 0%; }
+    }
+    .ticker-track {
+      display: inline-block;
+      animation: tickermove 25s linear infinite;
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
+    }
+    .ticker-track span { margin: 0 2rem; }
+    @keyframes tickermove {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 2.5rem 2rem 0;
+      background: linear-gradient(180deg, rgba(255,45,139,0.08) 0%, transparent 100%);
+    }
+    .site-logo {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      background: linear-gradient(135deg, #FF2D8B 0%, #FF78C4 25%, #D4A8FF 50%, #FF78C4 75%, #FF2D8B 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s ease infinite;
+      text-shadow: none;
+      filter: drop-shadow(0 0 20px rgba(255,45,139,0.5));
+      line-height: 1.1;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .site-tagline {
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      color: var(--baby-pink);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+      text-shadow: 0 0 10px rgba(255,179,217,0.6);
+    }
+    .header-decos {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.6rem;
+      font-size: 1.4rem;
+      animation: float-decos 3s ease-in-out infinite;
+    }
+    @keyframes float-decos {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* ── NAV TABS ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      padding: 1rem 2rem 0;
+      background: linear-gradient(180deg, #0d000d 0%, rgba(13,0,13,0.95) 100%);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid rgba(255,45,139,0.3);
+    }
+    .tab-btn {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      padding: 0.6rem 1.6rem 0.5rem;
+      border: 2px solid rgba(255,120,196,0.4);
+      border-bottom: none;
+      background: rgba(255,45,139,0.05);
+      color: var(--baby-pink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      border-radius: 10px 10px 0 0;
+      margin: 0 2px;
+      text-transform: uppercase;
+    }
+    .tab-btn:hover {
+      background: rgba(255,45,139,0.2);
+      color: #fff;
+      border-color: var(--hot-pink);
+      text-shadow: 0 0 10px var(--hot-pink);
+    }
+    .tab-btn.active {
+      background: linear-gradient(180deg, rgba(255,45,139,0.35) 0%, rgba(255,45,139,0.12) 100%);
+      color: #fff;
+      border-color: var(--hot-pink);
+      text-shadow: 0 0 12px var(--hot-pink);
+      box-shadow: 0 -2px 12px rgba(255,45,139,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(13,0,13,0), #0d000d, rgba(13,0,13,0));
+    }
+
+    /* ── PAGE SECTIONS ── */
+    .page { display: none; animation: pagefade 0.4s ease; }
+    .page.active { display: block; }
+    @keyframes pagefade {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════
+       HOME PAGE
+    ══════════════════════════════ */
+
+    /* HERO */
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      margin: 0;
+      overflow: hidden;
+      border-bottom: 2px solid rgba(255,45,139,0.25);
+    }
+    .hero-left {
+      padding: 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.8rem;
+      position: relative;
+    }
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255,45,139,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,45,139,0.15);
+      border: 1.5px solid rgba(255,45,139,0.5);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      color: var(--baby-pink);
+      letter-spacing: 0.15em;
+      width: fit-content;
+      text-shadow: 0 0 8px rgba(255,179,217,0.6);
+    }
+    .hero-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      line-height: 1.15;
+      color: #fff;
+      text-shadow: 0 0 30px rgba(255,45,139,0.4), 2px 2px 0 rgba(255,45,139,0.3);
+    }
+    .hero-title .highlight {
+      background: linear-gradient(90deg, var(--hot-pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 15px rgba(255,45,139,0.6));
+    }
+    .hero-sub {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,179,217,0.8);
+      max-width: 380px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-glam {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      background: linear-gradient(135deg, var(--hot-pink) 0%, var(--bubblegum) 50%, var(--lilac) 100%);
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(255,45,139,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-glam:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 30px rgba(255,45,139,0.65); }
+    .btn-outline {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      background: transparent;
+      color: var(--baby-pink);
+      border: 1.5px solid rgba(255,120,196,0.5);
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,45,139,0.15); border-color: var(--hot-pink); color: #fff; }
+
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      position: relative;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(212,168,255,0.12) 0%, transparent 70%);
+    }
+    .hero-card {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 3/4;
+      border-radius: 24px;
+      border: 2px solid rgba(255,120,196,0.35);
+      background: linear-gradient(145deg, rgba(255,45,139,0.12) 0%, rgba(212,168,255,0.08) 100%);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      box-shadow: 0 0 60px rgba(255,45,139,0.2), 0 0 120px rgba(212,168,255,0.1), inset 0 1px 0 rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      animation: card-glow 4s ease-in-out infinite;
+    }
+    @keyframes card-glow {
+      0%, 100% { box-shadow: 0 0 60px rgba(255,45,139,0.2), 0 0 120px rgba(212,168,255,0.1), inset 0 1px 0 rgba(255,255,255,0.1); }
+      50% { box-shadow: 0 0 80px rgba(255,45,139,0.35), 0 0 140px rgba(212,168,255,0.18), inset 0 1px 0 rgba(255,255,255,0.15); }
+    }
+    .hero-card-emoji { font-size: 5rem; animation: float-decos 3s ease-in-out infinite; }
+    .hero-card-label {
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      color: rgba(255,179,217,0.6);
+      letter-spacing: 0.15em;
+      text-align: center;
+    }
+    .hero-card-tag {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: linear-gradient(135deg, var(--hot-pink), var(--bubblegum));
+      color: #fff;
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-shadow: none;
+    }
+
+    /* GLITTER DIVIDER */
+    .glitter-divider {
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 1.3rem;
+      letter-spacing: 1.5rem;
+      color: var(--baby-pink);
+      text-shadow: 0 0 10px rgba(255,179,217,0.5);
+      border-top: 1px solid rgba(255,45,139,0.15);
+      border-bottom: 1px solid rgba(255,45,139,0.15);
+      background: rgba(255,45,139,0.03);
+    }
+
+    /* CATEGORIES */
+    .section { padding: 4rem 3rem; position: relative; z-index: 1; }
+    .section-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(90deg, var(--hot-pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 15px rgba(255,45,139,0.3));
+    }
+    .section-sub {
+      font-family: 'VT323', monospace;
+      text-align: center;
+      font-size: 1rem;
+      color: rgba(255,179,217,0.6);
+      letter-spacing: 0.2em;
+      margin-bottom: 2.5rem;
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+    .cat-card {
+      border-radius: 20px;
+      border: 1.5px solid rgba(255,120,196,0.25);
+      background: linear-gradient(145deg, rgba(255,45,139,0.08) 0%, rgba(212,168,255,0.05) 100%);
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(6px);
+      position: relative;
+      overflow: hidden;
+    }
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+      border-radius: 20px;
+    }
+    .cat-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--hot-pink);
+      box-shadow: 0 12px 40px rgba(255,45,139,0.3), 0 0 0 1px rgba(255,45,139,0.2);
+      background: linear-gradient(145deg, rgba(255,45,139,0.15) 0%, rgba(212,168,255,0.1) 100%);
+    }
+    .cat-emoji { font-size: 2.8rem; display: block; margin-bottom: 0.8rem; }
+    .cat-name {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .cat-count {
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      color: rgba(255,179,217,0.55);
+      letter-spacing: 0.1em;
+    }
+
+    /* PRODUCTS */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .product-card {
+      border-radius: 20px;
+      border: 1.5px solid rgba(255,120,196,0.2);
+      background: linear-gradient(145deg, rgba(255,45,139,0.07) 0%, rgba(212,168,255,0.04) 100%);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--hot-pink);
+      box-shadow: 0 16px 50px rgba(255,45,139,0.3);
+    }
+    .product-img-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-img-wrap.c1 { background: linear-gradient(135deg, rgba(255,45,139,0.25), rgba(255,120,196,0.15)); }
+    .product-img-wrap.c2 { background: linear-gradient(135deg, rgba(212,168,255,0.25), rgba(0,229,255,0.1)); }
+    .product-img-wrap.c3 { background: linear-gradient(135deg, rgba(204,255,0,0.15), rgba(255,120,196,0.2)); }
+    .product-pill {
+      position: absolute;
+      top: 0.8rem; left: 0.8rem;
+      font-family: 'VT323', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--hot-pink), var(--bubblegum));
+      color: #fff;
+    }
+    .product-add-btn {
+      display: none;
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(90deg, var(--hot-pink), var(--bubblegum));
+      color: #fff;
+      font-family: 'Boogaloo', cursive;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 0.8rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .product-card:hover .product-add-btn { display: block; }
+    .product-info { padding: 1rem 1.2rem 1.2rem; }
+    .product-name {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.2rem;
+    }
+    .product-era {
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      color: rgba(255,179,217,0.6);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .product-price {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.1rem;
+      background: linear-gradient(90deg, var(--hot-pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* EDITORIAL BANNER */
+    .editorial-banner {
+      margin: 0 3rem 4rem;
+      border-radius: 24px;
+      border: 1.5px solid rgba(255,120,196,0.25);
+      background: linear-gradient(135deg, rgba(255,45,139,0.12) 0%, rgba(212,168,255,0.08) 50%, rgba(0,229,255,0.05) 100%);
+      padding: 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(255,45,139,0.1);
+    }
+    .editorial-banner::before {
+      content: '✦ ✦ ✦';
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      font-size: 1.2rem;
+      color: rgba(255,179,217,0.25);
+      letter-spacing: 1rem;
+    }
+    .editorial-banner h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255,45,139,0.4);
+      margin-bottom: 0.8rem;
+    }
+    .editorial-banner h2 span {
+      background: linear-gradient(90deg, var(--hot-pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .editorial-banner p {
+      color: rgba(255,179,217,0.75);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 480px;
+    }
+    .editorial-decos { font-size: 4rem; animation: float-decos 3.5s ease-in-out infinite 0.5s; }
+
+    /* NEWSLETTER */
+    .newsletter {
+      margin: 0 3rem 4rem;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,45,139,0.18) 0%, rgba(212,168,255,0.12) 100%);
+      border: 1.5px solid rgba(255,120,196,0.3);
+      padding: 3rem;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(255,45,139,0.12);
+    }
+    .newsletter h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: #fff;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 20px rgba(255,45,139,0.4);
+    }
+    .newsletter p {
+      color: rgba(255,179,217,0.75);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+    }
+    .newsletter-row {
+      display: flex;
+      max-width: 420px;
+      margin: 0 auto;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255,120,196,0.4);
+      background: rgba(255,255,255,0.05);
+    }
+    .newsletter-row input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0.8rem 1.4rem;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      color: #fff;
+      outline: none;
+    }
+    .newsletter-row input::placeholder { color: rgba(255,179,217,0.45); }
+    .newsletter-row button {
+      background: linear-gradient(135deg, var(--hot-pink), var(--bubblegum));
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      font-family: 'Boogaloo', cursive;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border-radius: 0 999px 999px 0;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .newsletter-row button:hover { opacity: 0.85; }
+    .newsletter-note {
+      font-family: 'VT323', monospace;
+      font-size: 0.85rem;
+      color: rgba(255,179,217,0.4);
+      letter-spacing: 0.12em;
+      margin-top: 0.8rem;
+    }
+
+    /* ══════════════════════════════
+       MAGAZINE PAGE
+    ══════════════════════════════ */
+    .magazine-hero {
+      padding: 4rem 3rem 2rem;
+      text-align: center;
+    }
+    .mag-grid {
+      padding: 0 3rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .mag-featured {
+      grid-column: 1 / -1;
+      border-radius: 24px;
+      border: 1.5px solid rgba(255,120,196,0.3);
+      background: linear-gradient(145deg, rgba(255,45,139,0.12), rgba(212,168,255,0.07));
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .mag-featured-text h3 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 0 20px rgba(255,45,139,0.3);
+    }
+    .mag-featured-text p { color: rgba(255,179,217,0.75); font-size: 0.95rem; line-height: 1.75; }
+    .mag-featured-img {
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,45,139,0.2), rgba(212,168,255,0.15));
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      border: 1.5px solid rgba(255,120,196,0.2);
+    }
+    .mag-card {
+      border-radius: 20px;
+      border: 1.5px solid rgba(255,120,196,0.2);
+      background: linear-gradient(145deg, rgba(255,45,139,0.07), rgba(212,168,255,0.04));
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .mag-card:hover { transform: translateY(-4px); border-color: var(--hot-pink); box-shadow: 0 10px 30px rgba(255,45,139,0.2); }
+    .mag-card-img {
+      border-radius: 12px;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, rgba(255,45,139,0.2), rgba(212,168,255,0.12));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,120,196,0.15);
+    }
+    .mag-tag {
+      font-family: 'VT323', monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      color: var(--bubblegum);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .mag-card h4 {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.2rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .mag-card p { font-size: 0.88rem; color: rgba(255,179,217,0.6); line-height: 1.6; }
+
+    /* ══════════════════════════════
+       LOCATION PAGE
+    ══════════════════════════════ */
+    .location-wrap {
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .location-info h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2rem;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255,45,139,0.4);
+      margin-bottom: 1.5rem;
+    }
+    .location-detail {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      padding: 1.2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,120,196,0.2);
+      background: rgba(255,45,139,0.05);
+    }
+    .location-detail .icon { font-size: 1.8rem; flex-shrink: 0; }
+    .location-detail h4 {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1rem;
+      color: var(--baby-pink);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+    .location-detail p { font-size: 0.9rem; color: rgba(255,179,217,0.7); line-height: 1.6; }
+    .map-placeholder {
+      border-radius: 24px;
+      border: 1.5px solid rgba(255,120,196,0.3);
+      background: linear-gradient(135deg, rgba(255,45,139,0.12), rgba(212,168,255,0.08));
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(255,45,139,0.15);
+    }
+    .map-placeholder .map-emoji { font-size: 5rem; animation: float-decos 3s ease-in-out infinite; }
+    .map-placeholder p { font-family: 'VT323', monospace; font-size: 1rem; color: rgba(255,179,217,0.5); letter-spacing: 0.15em; }
+
+    /* ══════════════════════════════
+       ABOUT PAGE
+    ══════════════════════════════ */
+    .about-wrap {
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-img {
+      border-radius: 24px;
+      border: 1.5px solid rgba(255,120,196,0.3);
+      background: linear-gradient(145deg, rgba(255,45,139,0.15), rgba(212,168,255,0.1));
+      aspect-ratio: 3/4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      box-shadow: 0 0 80px rgba(255,45,139,0.2);
+      font-size: 5rem;
+      animation: card-glow 4s ease-in-out infinite;
+    }
+    .about-img p { font-family: 'VT323', monospace; font-size: 0.95rem; color: rgba(255,179,217,0.5); letter-spacing: 0.15em; }
+    .about-text h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255,45,139,0.4);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .about-text h2 span {
+      background: linear-gradient(90deg, var(--hot-pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .about-text p {
+      color: rgba(255,179,217,0.75);
+      font-size: 0.98rem;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .stat-box {
+      border-radius: 16px;
+      border: 1px solid rgba(255,120,196,0.25);
+      background: rgba(255,45,139,0.08);
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .stat-box .num {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, var(--hot-pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+    .stat-box .label { font-family: 'VT323', monospace; font-size: 0.85rem; color: rgba(255,179,217,0.5); letter-spacing: 0.12em; }
+
+    /* ══════════════════════════════
+       CONTACT PAGE
+    ══════════════════════════════ */
+    .contact-wrap {
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .contact-info h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2rem;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255,45,139,0.4);
+      margin-bottom: 1rem;
+    }
+    .contact-info p { color: rgba(255,179,217,0.7); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2rem; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,120,196,0.2);
+      background: rgba(255,45,139,0.05);
+      margin-bottom: 0.8rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--hot-pink); background: rgba(255,45,139,0.12); transform: translateX(4px); }
+    .contact-link .c-icon { font-size: 1.5rem; }
+    .contact-link span {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1rem;
+      color: var(--baby-pink);
+      letter-spacing: 0.06em;
+    }
+    .contact-form {
+      border-radius: 24px;
+      border: 1.5px solid rgba(255,120,196,0.25);
+      background: linear-gradient(145deg, rgba(255,45,139,0.08), rgba(212,168,255,0.05));
+      padding: 2rem;
+    }
+    .contact-form h3 {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 15px rgba(255,45,139,0.3);
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block;
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      color: rgba(255,179,217,0.6);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,120,196,0.25);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--hot-pink); box-shadow: 0 0 0 3px rgba(255,45,139,0.15); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,179,217,0.3); }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      border-top: 1px solid rgba(255,45,139,0.2);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: rgba(255,45,139,0.03);
+      position: relative;
+      z-index: 1;
+    }
+    .footer-logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.3rem;
+      background: linear-gradient(90deg, var(--hot-pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    footer p {
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      color: rgba(255,179,217,0.4);
+      letter-spacing: 0.1em;
+    }
+    .footer-social { display: flex; gap: 1rem; }
+    .footer-social a {
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    .footer-social a:hover { transform: rotate(-15deg) scale(1.3); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { flex-wrap: wrap; gap: 4px; padding: 0.8rem 1rem 0; }
+      .tab-btn { font-size: 0.85rem; padding: 0.5rem 1rem 0.4rem; }
+      .hero, .about-wrap, .contact-wrap, .location-wrap { grid-template-columns: 1fr; }
+      .hero-right { min-height: 260px; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .mag-grid { grid-template-columns: 1fr; }
+      .mag-featured { grid-template-columns: 1fr; }
+      .editorial-banner { grid-template-columns: 1fr; }
+      .section, .newsletter, .editorial-banner { margin-left: 0; margin-right: 0; padding-left: 1.5rem; padding-right: 1.5rem; }
+      .mag-grid, .location-wrap, .about-wrap, .contact-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 550px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- Ticker -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>✦ NEW DROPS EVERY FRIDAY ✦</span>
+    <span>🦋 Y2K VINTAGE CLOTHING 🦋</span>
+    <span>✦ FREE SHIPPING OVER $75 ✦</span>
+    <span>💅 ONE OF A KIND PIECES 💅</span>
+    <span>✦ SUSTAINABLY SOURCED ✦</span>
+    <span>🌸 SHOP THE COLLECTION 🌸</span>
+    <span>✦ NEW DROPS EVERY FRIDAY ✦</span>
+    <span>🦋 Y2K VINTAGE CLOTHING 🦋</span>
+    <span>✦ FREE SHIPPING OVER $75 ✦</span>
+    <span>💅 ONE OF A KIND PIECES 💅</span>
+    <span>✦ SUSTAINABLY SOURCED ✦</span>
+    <span>🌸 SHOP THE COLLECTION 🌸</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="site-logo">Glam Riot Vintage</div>
+  <div class="site-tagline">✦ preloved fashion from another era ✦</div>
+  <div class="header-decos">🦋 💋 ✨ 👛 🌸</div>
+</header>
+
+<!-- Nav Tabs -->
+<nav>
+  <button class="tab-btn active" onclick="showTab('home', this)">🏠 Home</button>
+  <button class="tab-btn" onclick="showTab('magazine', this)">📖 Magazine</button>
+  <button class="tab-btn" onclick="showTab('location', this)">📍 Location</button>
+  <button class="tab-btn" onclick="showTab('about', this)">💋 About</button>
+  <button class="tab-btn" onclick="showTab('contact', this)">✉️ Contact</button>
+</nav>
+
+<!-- ════════ HOME ════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">🦋 SPRING COLLECTION 2025 🦋</div>
+      <h1 class="hero-title">
+        Dress like the<br/>
+        <span class="highlight">main character</span><br/>
+        you always were.
+      </h1>
+      <p class="hero-sub">
+        Handpicked Y2K, '80s, and '90s pieces — platform shoes, velvet blazers, tiny sunglasses & more. Every look is one of a kind, bb. 💅
+      </p>
+      <div class="hero-btns">
+        <a href="#" class="btn-glam">Shop New Arrivals 🛍️</a>
+        <button class="btn-outline" onclick="showTab('magazine', document.querySelectorAll('.tab-btn')[1])">View Lookbook →</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <span class="hero-card-tag">✦ NEW IN</span>
+        <div class="hero-card-emoji">🌸</div>
+        <p class="hero-card-label">ADD YOUR HERO IMAGE HERE</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="glitter-divider">✦ 🦋 ✦ 💋 ✦ 🌸 ✦ 💅 ✦ 🦋 ✦ 💋 ✦ 🌸 ✦</div>
+
+  <!-- Categories -->
+  <section class="section">
+    <h2 class="section-title">Shop by Vibe 💅</h2>
+    <p class="section-sub">✦ ALL PIECES ARE ONE OF A KIND ✦</p>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <span class="cat-emoji">👗</span>
+        <span class="cat-name">Dresses</span>
+        <span class="cat-count">42 pieces</span>
+      </div>
+      <div class="cat-card">
+        <span class="cat-emoji">🧥</span>
+        <span class="cat-name">Outerwear</span>
+        <span class="cat-count">28 pieces</span>
+      </div>
+      <div class="cat-card">
+        <span class="cat-emoji">👚</span>
+        <span class="cat-name">Y2K Tops</span>
+        <span class="cat-count">61 pieces</span>
+      </div>
+      <div class="cat-card">
+        <span class="cat-emoji">👜</span>
+        <span class="cat-name">Accessories</span>
+        <span class="cat-count">35 pieces</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="section" style="padding-top:0">
+    <h2 class="section-title">New Arrivals 🌸</h2>
+    <p class="section-sub">✦ JUST DROPPED THIS WEEK ✦</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img-wrap c1">
+          <span class="product-pill">Just Dropped 🦋</span>
+          👗
+          <button class="product-add-btn">Add to Cart ✦</button>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Velvet Mini Dress</p>
+          <p class="product-era">Y2K · Size M</p>
+          <p class="product-price">$78</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap c2">
+          <span class="product-pill">1 Left! 💅</span>
+          🧥
+          <button class="product-add-btn">Add to Cart ✦</button>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Faux Fur Jacket</p>
+          <p class="product-era">2000s · Size S</p>
+          <p class="product-price">$95</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap c3">
+          <span class="product-pill">New In ✨</span>
+          👢
+          <button class="product-add-btn">Add to Cart ✦</button>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Platform Boots</p>
+          <p class="product-era">90s · Size 7.5</p>
+          <p class="product-price">$112</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Banner -->
+  <div class="editorial-banner">
+    <div>
+      <h2>Vintage is <span>not just clothes.</span></h2>
+      <p>Every piece has been thrifted, loved, and brought back to life. We believe fashion is memory — and wearing vintage means keeping stories alive. 🦋</p>
+      <a href="#" class="btn-glam" style="margin-top:1.5rem; display:inline-block">Read Our Story ✦</a>
+    </div>
+    <div class="editorial-decos">💋</div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <h2>Join the Glam List 🌸</h2>
+    <p>New drops, styling inspo & behind-the-scenes thrift runs — straight to your inbox ✦</p>
+    <div class="newsletter-row">
+      <input type="email" placeholder="your@email.com"/>
+      <button>Subscribe 🦋</button>
+    </div>
+    <p class="newsletter-note">NO SPAM. JUST VIBES. UNSUBSCRIBE ANYTIME. ✦</p>
+  </div>
+
+</div>
+
+<!-- ════════ MAGAZINE ════════ -->
+<div class="page" id="page-magazine">
+  <div class="magazine-hero">
+    <h2 class="section-title">The Glam Gazette 📖</h2>
+    <p class="section-sub">✦ STYLING TIPS · LOOKBOOKS · THRIFT DIARIES ✦</p>
+  </div>
+  <div class="mag-grid">
+    <div class="mag-featured">
+      <div class="mag-featured-text">
+        <h3>The Y2K Revival: How to Style It in 2025 🦋</h3>
+        <p>From butterfly clips to low-rise everything — Y2K fashion is having its biggest moment yet. Here's how we're styling our favorite vintage finds for right now. Spoiler: it's all about mixing eras.</p>
+        <a href="#" class="btn-glam" style="margin-top:1.5rem; display:inline-block">Read Article ✦</a>
+      </div>
+      <div class="mag-featured-img">🦋</div>
+    </div>
+    <div class="mag-card">
+      <div class="mag-card-img">👗</div>
+      <p class="mag-tag">✦ LOOKBOOK</p>
+      <h4>Velvet Season Lookbook</h4>
+      <p>All the ways to wear velvet this season, from mini dresses to blazers and beyond. Dreamy and dramatic. 💜</p>
+    </div>
+    <div class="mag-card">
+      <div class="mag-card-img">🛍️</div>
+      <p class="mag-tag">✦ THRIFT DIARY</p>
+      <h4>A Day at the Flea Market</h4>
+      <p>Behind the scenes of our latest sourcing trip — the hidden gems we found, the ones that got away, and what's coming to the shop soon.</p>
+    </div>
+    <div class="mag-card">
+      <div class="mag-card-img">💋</div>
+      <p class="mag-tag">✦ STYLING TIPS</p>
+      <h4>How to Build a Vintage Wardrobe</h4>
+      <p>Starting from scratch or filling in the gaps — our guide to curating a preloved closet that's totally you. 🌸</p>
+    </div>
+    <div class="mag-card">
+      <div class="mag-card-img">✨</div>
+      <p class="mag-tag">✦ FEATURE</p>
+      <h4>Bratz Doll Energy: The Aesthetic Guide</h4>
+      <p>Big hair, tiny tops, chunky platforms — channeling early 2000s Bratz vibes with pieces from our current collection.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ LOCATION ════════ -->
+<div class="page" id="page-location">
+  <div class="location-wrap">
+    <div class="location-info">
+      <h2>Find Us IRL 📍</h2>
+      <div class="location-detail">
+        <span class="icon">🏪</span>
+        <div>
+          <h4>THE STORE</h4>
+          <p>123 Vintage Row, Suite 2B<br/>Your City, State 00000</p>
+        </div>
+      </div>
+      <div class="location-detail">
+        <span class="icon">🕐</span>
+        <div>
+          <h4>HOURS</h4>
+          <p>Tuesday – Saturday: 11am – 7pm<br/>Sunday: 12pm – 5pm<br/>Monday: Closed ✦</p>
+        </div>
+      </div>
+      <div class="location-detail">
+        <span class="icon">📞</span>
+        <div>
+          <h4>PHONE</h4>
+          <p>(555) 000-0000</p>
+        </div>
+      </div>
+      <div class="location-detail">
+        <span class="icon">🚇</span>
+        <div>
+          <h4>GETTING HERE</h4>
+          <p>Two blocks from the downtown metro. Street parking available on Vintage Row and side streets.</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <div class="map-emoji">🗺️</div>
+      <p>EMBED YOUR GOOGLE MAP HERE</p>
+      <a href="#" class="btn-glam" style="margin-top:0.5rem">Get Directions 📍</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ ABOUT ════════ -->
+<div class="page" id="page-about">
+  <div class="about-wrap">
+    <div class="about-img">
+      🦋
+      <p>ADD YOUR PHOTO HERE</p>
+    </div>
+    <div class="about-text">
+      <h2>The girl behind<br/><span>Glam Riot ✦</span></h2>
+      <p>Hi! I'm [Your Name], founder and chief thrifter of Glam Riot Vintage. What started as an obsession with early 2000s fashion and weekend flea market runs has grown into something I never could have dreamed up. 🌸</p>
+      <p>Every single piece in this shop has been hand-sourced by me — held up to the light, inspected, loved, and chosen because it deserves a second life with someone who gets it.</p>
+      <p>I believe fashion is memory. Wearing vintage is a form of time travel — and I'm here to be your guide. 💋</p>
+      <div class="about-stats">
+        <div class="stat-box">
+          <span class="num">500+</span>
+          <span class="label">PIECES SOLD</span>
+        </div>
+        <div class="stat-box">
+          <span class="num">3</span>
+          <span class="label">YEARS RUNNING</span>
+        </div>
+        <div class="stat-box">
+          <span class="num">100%</span>
+          <span class="label">HAND SOURCED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ CONTACT ════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h2>Say Hello 💋</h2>
+      <p>Questions about sizing, sourcing requests, wholesale, or just want to chat vintage? Slide into our DMs or send us a message. We respond within 24 hours! 🌸</p>
+      <a href="mailto:hello@glamriot.com" class="contact-link">
+        <span class="c-icon">📧</span>
+        <span>hello@glamriot.com</span>
+      </a>
+      <a href="#" class="contact-link">
+        <span class="c-icon">📷</span>
+        <span>@glamriotvintage</span>
+      </a>
+      <a href="#" class="contact-link">
+        <span class="c-icon">🎵</span>
+        <span>@glamriotvintage</span>
+      </a>
+      <a href="tel:5550000000" class="contact-link">
+        <span class="c-icon">📞</span>
+        <span>(555) 000-0000</span>
+      </a>
+    </div>
+    <div class="contact-form">
+      <h3>Send a Message ✦</h3>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="Bratz Girl ✦"/>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" placeholder="I need that velvet dress 💋"/>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea rows="4" placeholder="Tell us what's on your mind ✦"></textarea>
+      </div>
+      <button class="btn-glam" style="width:100%">Send It 🌸</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <span class="footer-logo">Glam Riot Vintage ✦</span>
+  <p>© 2025 GLAM RIOT VINTAGE 🦋 ALL RIGHTS RESERVED</p>
+  <div class="footer-social">
+    <a href="#">📷</a>
+    <a href="#">🎵</a>
+    <a href="#">🛍️</a>
+  </div>
+</footer>
+
+<script>
+  // Generate twinkling stars
+  const starsContainer = document.getElementById('stars');
+  const symbols = ['✦', '✧', '★', '✩', '⋆', '·'];
+  for (let i = 0; i < 60; i++) {
+    const star = document.createElement('span');
+    star.classList.add('star');
+    star.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.setProperty('--d', (2 + Math.random() * 4) + 's');
+    star.style.setProperty('--delay', (-Math.random() * 6) + 's');
+    star.style.fontSize = (0.5 + Math.random() * 0.8) + 'rem';
+    starsContainer.appendChild(star);
+  }
+
+  // Tab switching
+  function showTab(tabId, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + tabId).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
